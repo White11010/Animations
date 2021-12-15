@@ -1,0 +1,81 @@
+.switch {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+
+.switch + label {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	user-select: none;
+}
+
+/* Button background */
+.switch + label::before {
+	content: '';
+	display: inline-block;
+	width: 51px;
+	height: 31px;
+	border-radius: 20px;
+	transition: all .5s;
+}
+
+/* Button knob */
+.switch + label::after {
+	content: '';
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	top: calc(50% - 27px/2);
+	left: 2px;
+	border-radius: 100%;
+	background: #FFFFFF;
+	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.06);
+	transition: transform .5s ease-out;
+}
+
+
+/* Common knob styles */
+/* Hover */
+.switch:not(:disabled) + label:hover::after {
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.21), 0px 3px 1px rgba(0, 0, 0, 0.06);
+}
+/* Pressed */
+.switch:not(:disabled) + label:active::after {
+	box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.18);
+}
+/* Disabled */
+.switch:disabled + label::after {
+	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.02);
+}
+
+
+/* Button disabled state styles */
+/* Normal */
+.switch:not(:checked) + label::before {
+	background-color: #BCBCC4;
+}
+/* Disabled */
+.switch:not(:checked):disabled + label::before {
+	background-color: #EBEBED;
+}
+
+
+/* Button checked state styles */
+.switch:checked + label::after {
+	/* left: 22px; */
+	transform: translate3d(20px, 0, 0);
+}
+/* Normal */
+.switch:checked + label::before {
+	background-color: #34C759;
+}
+/* Disabled */
+.switch:checked:disabled+ label::before {
+	background-color: #C2EECD;
+}
+
+/* В фигме для неактивной кнопки при наведении и клике фоновый цвет отличается от обычного состояния (#BCBCC4 для normal и #BCBCC3 для hover и pressed).
+Решил, что это опечатка и при стилизации задал для всех состояний цвет фона #BCBCC4 */
+
